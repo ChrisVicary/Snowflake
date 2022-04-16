@@ -1,6 +1,5 @@
 # Project Setup
 
-
 ## Create the Repository
 
 I started with a very similar setup to the tutorial series, setting the repository in GitHub and cloning to a local folder on my PC.
@@ -60,7 +59,7 @@ In the Sandbox project I had kept the Program.cs file that was part of the proje
 ```
 Snowflake.Test.Print();
 ```
-> Note that there is no namespace or `Program` class in this file as I am using .Net 6 supports top-level statements.
+> Note that there is no namespace or `Program` class in this file as I am using .Net 6 which supports top-level statements.
 
 ## Video Link
 
