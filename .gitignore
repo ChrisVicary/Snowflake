@@ -1,5 +1,7 @@
 # Directories
 .vs/
 Build/
+**/obj/
+**/bin/
 
 # Files

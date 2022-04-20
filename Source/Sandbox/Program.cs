@@ -4,7 +4,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var application = new SandboxApp();
-        application.Run();
+        var bootstrapper = new SandboxBootstrapper();
+        bootstrapper.Run();
     }
 }

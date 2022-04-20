@@ -10,7 +10,7 @@ C# and C++ projects differ a little bit so I needed to do something a little bit
 
 The initial setup of the Snowflake.csproj file looks like this:
 
-```
+```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
@@ -45,7 +45,7 @@ I also moved the projects to a subfolder of the solution called Source, as I wan
 
 To ensure that everything was working, similar to the tutorial, I created a new class called Test in the Snowflake project with a single static Print method.
 
-```
+```cs
 namespace Snowflake;
 
 public class Test
@@ -56,11 +56,14 @@ public class Test
 
 In the Sandbox project I had kept the Program.cs file that was part of the project template but modified it to call my Print function on the Test class.
 
-```
+```cs
 Snowflake.Test.Print();
 ```
 > Note that there is no namespace or `Program` class in this file as I am using .Net 6 which supports top-level statements.
 
 ## Video Link
 
-[TheCherno - Game Engine Series - Project Setup](https://www.youtube.com/watch?v=KG8cAGvn9d4&list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT&index=5&ab_channel=TheCherno)
+[TheCherno - Game Engine Series - Project Setup](https://www.youtube.com/watch?v=KG8cAGvn9d4&list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT&index=4&ab_channel=TheCherno)
+
+## Next
+[Entry Point](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/03-EntryPoint.md)

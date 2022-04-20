@@ -6,5 +6,10 @@ This repository is my attempt at following the series from TheCherno and adaptin
 
 ## Contents
 
-1. [Project Setup](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/ProjectSetup.md)
-2. [Entry Point](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/EntryPoint.md)
+1. [Introduction](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/01-Introduction.md)
+2. [Project Setup](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/02-ProjectSetup.md)
+3. [Entry Point](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/03-EntryPoint.md)
+4. [Logging](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/04-Logging.md)
+
+## Next
+[Project Setup](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/02-ProjectSetup.md)
