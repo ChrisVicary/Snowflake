@@ -126,6 +126,18 @@ The console output should now look something like this:
 
 ![Logging Output](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/Images/04-Logging-01.png "Logging Output")
 
+## Benchmarks
+
+When it comes to performance, managed languages like C# often get a bad rep. While I'm not suggesting that this engine will be more performant that a C++ version, I do want to make sure that I take performance seriously from the start. As I add features to the engine I want to add benchmarks that look at performance, both in terms of speed and memory usage. In this case, logging is something that should be able to run with as little overhead as possible.
+
+To test the performance of the various logging techniques I followed an excellent video from Nick Chapsas on YouTube, [High-performance logging in .NET, the poper way](https://www.youtube.com/watch?v=a26zu-pyEyg&ab_channel=NickChapsas).
+
+In the root folder of the Snowflake solution I've added a new folder for Test code, this will contain the benchmarks as well as unit tests and system tests in the future. Inside this folder I've created a new console application and added a reference to the awesome [BenchmarkDotNet](https://www.nuget.org/packages/BenchmarkDotNet) nuget package. I'm not going to cover the code used to run the benchmarks as it's basically copied from Nick's video. But here are the results:
+
+![Benchmark Results](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/Images/04-Logging-02.png "Benchmark Results")
+
+This shows that the most efficent way to log using the ILogger\<T> interface is using a Source Generated extension method with a message definition. Not only is it efficient in terms of speed but because the parameters are not boxed into an object array, there isn't any heap allocation or garbage collection associated with the logging. Going forward I will endeavor to use this technique throughout the project.
+
 ## Food for Thought
 
 There is certainly some extra boilerplate code in this C# implementation of logging than in C++, however at this point we do have a more flexible solution. In the C++ implementation if a greater level of granularity was needed for the log categories, maybe rendering, then the code would need to be modified to allow for that additional category. In the C# case the rendering code would just need to have an ILogger\<Renderer> injected into the constructor, nothing else would need to change.
