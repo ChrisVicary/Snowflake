@@ -145,3 +145,6 @@ There is certainly some extra boilerplate code in this C# implementation of logg
 ## Video Link
 
 [TheCherno - Game Engine Series - Logging](https://www.youtube.com/watch?v=meARMOmTLgE&list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT&index=6&ab_channel=TheCherno)
+
+## Next
+[Premake](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/05-Premake.md)

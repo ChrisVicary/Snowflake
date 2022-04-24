@@ -13,9 +13,7 @@ public abstract class Application
 
     public virtual void Run()
     {
-        m_logger.LogInformation("Information from snowflake!");
-        m_logger.LogWarning("Warning from snowflake!");
-        m_logger.LogError("Error from snowflake!");
+        m_logger.LogInformation("Snowflake Initialized.");
         while (true);
     }
 }
