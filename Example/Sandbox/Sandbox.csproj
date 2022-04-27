@@ -20,13 +20,8 @@
     <IntermediateOutputPath>$(SolutionDir)\Build\Obj\$(Configuration)-$(Platform)\$(MSBuildProjectName)\</IntermediateOutputPath>
   </PropertyGroup>
 
-  <!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="rd &quot;$(ProjectDir)obj&quot; /s /q" />
-    <Exec Command="rd &quot;$(ProjectDir)bin&quot; /s /q" />
-  </Target>-->
-
   <ItemGroup>
-    <ProjectReference Include="..\Snowflake\Snowflake.csproj" />
+    <ProjectReference Include="..\..\Source\Snowflake\Snowflake.csproj" />
   </ItemGroup>
 
 </Project>

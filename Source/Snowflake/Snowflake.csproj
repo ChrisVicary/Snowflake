@@ -19,11 +19,6 @@
     <IntermediateOutputPath>$(SolutionDir)\Build\Obj\$(Configuration)-$(Platform)\$(MSBuildProjectName)\</IntermediateOutputPath>
   </PropertyGroup>
   
-  <!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="rd &quot;$(ProjectDir)obj&quot; /s /q" />
-    <Exec Command="rd &quot;$(ProjectDir)bin&quot; /s /q" />
-  </Target>-->
-  
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
