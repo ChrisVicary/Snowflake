@@ -10,5 +10,5 @@ I spent a little bit of time playing around with a few options, but I was strugg
 [TheCherno - Game Engine Series - Premake](https://www.youtube.com/watch?v=sULV3aB2qeU&list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT&index=7&ab_channel=TheCherno)
 
 ## Next
-[Event System](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/06-Event-System.md)
+[Event System](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/06-EventSystem.md)
 

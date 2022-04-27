@@ -8,8 +8,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snowflake", "Source\Snowflake\Snowflake.csproj", "{73A7F801-3667-4B57-AA21-930E9E9B089A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E361DA98-57A2-4AF3-B40B-276F80B10C96}"
+	ProjectSection(SolutionItems) = preProject
+		Snowflake.runsettings = Snowflake.runsettings
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snowflake.Benchmark", "Test\Snowflake.Benchmark\Snowflake.Benchmark.csproj", "{381982E9-799A-4A99-BFBD-F4EDCECA8760}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snowflake.Benchmark", "Test\Snowflake.Benchmark\Snowflake.Benchmark.csproj", "{381982E9-799A-4A99-BFBD-F4EDCECA8760}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snowflake.Test", "Test\Snowflake.Test\Snowflake.Test.csproj", "{55197A33-FD67-4B8A-A145-061EA673B0CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,12 +33,16 @@ Global
 		{381982E9-799A-4A99-BFBD-F4EDCECA8760}.Debug|x64.Build.0 = Debug|x64
 		{381982E9-799A-4A99-BFBD-F4EDCECA8760}.Release|x64.ActiveCfg = Release|x64
 		{381982E9-799A-4A99-BFBD-F4EDCECA8760}.Release|x64.Build.0 = Release|x64
+		{55197A33-FD67-4B8A-A145-061EA673B0CC}.Debug|x64.ActiveCfg = Debug|x64
+		{55197A33-FD67-4B8A-A145-061EA673B0CC}.Debug|x64.Build.0 = Debug|x64
+		{55197A33-FD67-4B8A-A145-061EA673B0CC}.Release|x64.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{381982E9-799A-4A99-BFBD-F4EDCECA8760} = {E361DA98-57A2-4AF3-B40B-276F80B10C96}
+		{55197A33-FD67-4B8A-A145-061EA673B0CC} = {E361DA98-57A2-4AF3-B40B-276F80B10C96}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {327B6229-58ED-4818-8B94-68B662DC6BCE}
