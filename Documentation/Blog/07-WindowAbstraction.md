@@ -31,11 +31,38 @@ const char* title = context->marshal_as<const char*>(m_data.Title);
 m_window = glfwCreateWindow((int)props->Width, (int)props->Height, title, nullptr, nullptr);
 ```
 
-I did also omit the call to `glfwSetWindowUserPointer()` getting a `void*` from a managed type
+I did also omit the call to `glfwSetWindowUserPointer()` getting a `void*` from a managed type didn't seem possible. I'm not sure how necessary this is and might need to revisit it later.
+
+## GLFW
+
+When adding GLFW to the project I ended up adding some CMake files to get everything working. This is making me re-think my decision to skip premake. It would be nice for everything to use the same build system.
+
+## Creating the Window
+
+To show the window in the Sandbox I needed to have a way for the application to construct an `IWindow` implementation, TheCherno uses a static abstract method for this, interestingly this is a new feature added to C# 10. I could do something very similar, however I decided to stick to the dependency injection root for now. The `Application` class has been modified to take a `Func<IWindow>` as a constructor parameter, this will be the factory method that the application used to construct a window.
+
+In the Sandbox project I added a reference to the new Snowflake.Windows project, then added a singleton factory function to create the Window. The `CreateApplication` method the passes the factory function to the application constructor. The base application class then uses the factory function to create the window before starting the main game loop.
+
+### Sandbox Bootstrapper
+```cs
+internal class SandboxBootstrapper : Bootstrapper<SandboxApp>
+{
+    protected override void ConfigureServices(IServiceCollection services)
+    {
+        base.ConfigureServices(services);
+        services.AddSingleton<Func<IWindow>>(() => new WindowsWindow(new WindowProps()));
+    }
+
+    protected override SandboxApp CreateApplication(IServiceProvider serviceProvider) 
+        => new SandboxApp(
+            serviceProvider.GetRequiredService<ILogger<Application>>(), 
+            serviceProvider.GetRequiredService<Func<IWindow>>());
+}
+```
 
 ## Video Link
 
-[TheCherno - Game Engine Series - EventSystem](https://www.youtube.com/watch?v=sULV3aB2qeU&list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT&index=10&ab_channel=TheCherno)
+[TheCherno - Game Engine Series - Window Abstraction and GLFW](https://www.youtube.com/watch?v=sULV3aB2qeU&list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT&index=11&ab_channel=TheCherno)
 
 ## Next
 [Premake - Part 2](https://github.com/ChrisVicary/Snowflake/blob/main/Documentation/Blog/08-PremakePart2.md)
