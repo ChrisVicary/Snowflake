@@ -1,24 +1,31 @@
 ﻿using Microsoft.Extensions.Logging;
-using Snowflake.Events;
 
 namespace Snowflake;
 
 public abstract class Application
 {
     private readonly ILogger<Application> m_logger;
+    private readonly Func<IWindow> m_windowFactory;
 
-    public Application(ILogger<Application> logger)
+    private IWindow? m_window;
+    private bool m_running = true;
+
+    public Application(ILogger<Application> logger, Func<IWindow> windowFactory)
     {
         m_logger = logger;
+        m_windowFactory = windowFactory;
     }
 
     public virtual void Run()
     {
         m_logger.LogInformation("Snowflake Initialized.");
 
-        var windowResize = new WindowResizeEvent(800, 600);
-        m_logger.LogTrace(windowResize.ToString());
+        m_window = m_windowFactory();
+        m_logger.LogInformation("Window Created.");
 
-        while (true);
+        while (m_running)
+        {
+            m_window.OnUpdate();
+        }
     }
 }

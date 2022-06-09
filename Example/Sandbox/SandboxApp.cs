@@ -5,6 +5,6 @@ namespace Sandbox;
 
 internal class SandboxApp : Application
 {
-    public SandboxApp(ILogger<Application> logger)
-        : base(logger) { }
+    public SandboxApp(ILogger<Application> logger, Func<IWindow> windowFactory)
+        : base(logger, windowFactory) { }
 }

@@ -21,6 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Source\Snowflake.Windows\Snowflake.Windows.vcxproj" />
     <ProjectReference Include="..\..\Source\Snowflake\Snowflake.csproj" />
   </ItemGroup>
 

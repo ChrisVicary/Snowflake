@@ -4,5 +4,8 @@ Build/
 **/obj/
 **/bin/
 **/TestResults/
+**/x64/
+Vendor/GLFW_Lib/
+Vendor/GLFW/GLFW/
 
 # Files
