@@ -3,9 +3,12 @@
 Build/
 **/obj/
 **/bin/
-**/TestResults/
 **/x64/
-Vendor/GLFW_Lib/
-Vendor/GLFW/GLFW/
+**/TestResults/
 
 # Files
+**.sln
+**.csproj
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
