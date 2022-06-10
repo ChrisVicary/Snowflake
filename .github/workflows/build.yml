@@ -1,4 +1,4 @@
-name: .NET
+name: Build
 
 on:
   push:
@@ -27,6 +27,9 @@ jobs:
       with:
         msbuild-architecture: x64
         vs-prerelease: true
+    
+    - name: Premake
+      run: Vendor/Premake/premake5.exe vs2022
 
     - name: Restore dependencies
       run: dotnet restore
