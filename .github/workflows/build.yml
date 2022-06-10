@@ -38,4 +38,4 @@ jobs:
       run: msbuild Snowflake.sln
 
     - name: Test
-      run: dotnet test Test/Snowflake.Test --no-restore --no-build --verbosity normal
+      run: dotnet test Build\Bin\Debug-windows-x86_64\Snowflake.Test\Snowflake.Test.dll
