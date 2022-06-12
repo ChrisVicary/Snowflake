@@ -10,7 +10,7 @@ internal class SandboxBootstrapper : Bootstrapper<SandboxApp>
     protected override void ConfigureServices(IServiceCollection services)
     {
         base.ConfigureServices(services);
-        services.AddSingleton<Func<IWindow>>(() => new WindowsWindow(new WindowProps()));
+        services.AddSingleton<Func<IWindow>>(() => new WindowsWindow(new WindowProps()));        
     }
 
     protected override SandboxApp CreateApplication(IServiceProvider serviceProvider) 

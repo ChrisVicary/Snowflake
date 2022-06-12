@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Snowflake.Events;
 
 namespace Snowflake;
 
@@ -21,11 +22,26 @@ public abstract class Application
         m_logger.LogInformation("Snowflake Initialized.");
 
         m_window = m_windowFactory();
+        m_window.SetEventCallback(OnEvent);
         m_logger.LogInformation("Window Created.");
 
         while (m_running)
         {
             m_window.OnUpdate();
         }
+    }
+
+    protected virtual void OnEvent(Event e)
+    {
+        var dispatcher = new EventDispatcher(e);
+        dispatcher.Dispatch<WindowCloseEvent>(OnWindowClose);
+
+        m_logger.LogEvent(e);
+    }
+
+    private bool OnWindowClose(WindowCloseEvent e)
+    {
+        m_running = false;
+        return true;
     }
 }
