@@ -7,6 +7,7 @@ public abstract class Application
 {
     private readonly ILogger<Application> m_logger;
     private readonly Func<IWindow> m_windowFactory;
+    private readonly LayerStack m_layerStack = new LayerStack();
 
     private IWindow? m_window;
     private bool m_running = true;
@@ -16,6 +17,10 @@ public abstract class Application
         m_logger = logger;
         m_windowFactory = windowFactory;
     }
+
+    public void PushLayer(ILayer layer) => m_layerStack.PushLayer(layer);
+
+    public void PushOverlay(ILayer layer) => m_layerStack.PushOverlay(layer); 
 
     public virtual void Run()
     {
@@ -27,6 +32,9 @@ public abstract class Application
 
         while (m_running)
         {
+            foreach (var layer in m_layerStack)
+                layer.OnUpdate();
+
             m_window.OnUpdate();
         }
     }
@@ -36,7 +44,13 @@ public abstract class Application
         var dispatcher = new EventDispatcher(e);
         dispatcher.Dispatch<WindowCloseEvent>(OnWindowClose);
 
-        m_logger.LogEvent(e);
+        foreach(var layer in m_layerStack.Reverse())
+        {
+            if (e.Handled)
+                break;
+
+            layer.OnEvent(e);
+        }
     }
 
     private bool OnWindowClose(WindowCloseEvent e)

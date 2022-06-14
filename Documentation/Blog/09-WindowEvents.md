@@ -139,6 +139,36 @@ public abstract class Application
 }
 ```
 
+## Application Test
+
+Now that we have a way to break the application out of it's main loop, we can write a test for the application class. This test uses a mock window object to capture the `OnEvent` callback in the `SetEventCallback` method. Then when the window `OnUpdate` method is called, executes the `OnEvent` callback with a `WindowCloseEvent`. This should run the dispatcher to stop the application loop and exit the `Run` method.
+
+```cs
+[TestFixture]
+public class ApplicationTests
+{
+    [Test]
+    public void WindowCloseEvent_StopsApplication()
+    {
+        var mockLogger = new Mock<ILogger<Application>>();
+        var mockWindow = new Mock<IWindow>();
+        var mockApplication = new Mock<Application>(mockLogger.Object, () => mockWindow.Object) { CallBase = true };
+
+        Action<Event>? onEventAction = null;
+        mockWindow.Setup(m => m.SetEventCallback(It.IsAny<Action<Event>>()))
+            .Callback<Action<Event>>(a => onEventAction = a);
+        mockWindow.Setup(m => m.OnUpdate())
+            .Callback(() => onEventAction?.Invoke(new WindowCloseEvent()));
+
+        mockApplication.Object.Run();
+
+        Assert.IsNotNull(onEventAction);
+        mockWindow.Verify(m => m.SetEventCallback(It.IsAny<Action<Event>>()), Times.Once());
+        mockWindow.Verify(m => m.OnUpdate(), Times.Once());
+    }
+}
+```
+
 ## Video Link
 
 [TheCherno - Game Engine Series - Window Events](https://www.youtube.com/watch?v=r74WxFMIEdU&list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT&index=12&ab_channel=TheCherno)
