@@ -1,4 +1,4 @@
-include "./Scripts/Premake/dotnet.lua"
+include "./Scripts/dotnet.lua"
 
 workspace "Snowflake"
    configurations { "Debug", "Release" }
@@ -6,7 +6,8 @@ workspace "Snowflake"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 group "Dependencies"
-    include "./Scripts/GLFW/glfw.lua"
+    include "./Scripts/glad.lua"
+    include "./Scripts/glfw.lua"
 group ""
 
 include "Source/Snowflake"

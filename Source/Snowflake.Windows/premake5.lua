@@ -13,25 +13,33 @@ project "Snowflake.Windows"
         "%{prj.location}/**.cpp",
     }
 
-    removefiles { "%{prj.location}/x64/**.*" }
+    removefiles 
+    { 
+        "%{prj.location}/x64/**.*", 
+        "%{prj.location}/obj/**.*",
+    }
 
     includedirs
     {
+        "%{wks.location}/Vendor/Glad/include",
         "%{wks.location}/Vendor/GLFW/include",
     }
 
     links
     {
         "Snowflake",
+        "Glad",
         "GLFW",
     }
-   
-    removefiles { "%{prj.location}/obj/**.*" }
 
-   filter "configurations:Debug"
-      defines { "DEBUG" }
-      symbols "On"
+    filter "system:windows"
+        systemversion "latest"
+        defines { "GLFW_INCLUDE_NONE" }
 
-   filter "configurations:Release"
-      defines { "NDEBUG" }
-      optimize "On"
+    filter "configurations:Debug"
+        defines { "DEBUG" }
+        symbols "On"
+    
+    filter "configurations:Release"
+        defines { "NDEBUG" }
+        optimize "On"

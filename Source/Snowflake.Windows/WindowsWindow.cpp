@@ -2,6 +2,8 @@
 
 #include "WindowsWindow.h"
 
+#include <glad/glad.h>
+
 namespace Snowflake {
 namespace Windows {
 using namespace System;
@@ -20,7 +22,7 @@ static bool s_glfwInitialized = false;
 
 static void GLFWErrorCallback(int error, const char* description)
 {
-	// TODO: Log error somehow!
+	printf("GLFW Error %d: %s \n", error, description);
 }
 
 WindowsWindow::WindowsWindow(WindowProps^ props)
@@ -54,6 +56,10 @@ void WindowsWindow::Init(WindowProps^ props)
 	glfwSetWindowUserPointer(m_window, dataPtr.ToPointer());*/
 
 	glfwMakeContextCurrent(m_window);
+	int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+	if (!status)
+		printf("Failed to initialize Glad!");
+
 	SetVSync(true);
 
 	SET_CALLBACK_DELEGATE(CursorPosDelegate, OnCursorPos, GLFWcursorposfun, glfwSetCursorPosCallback)

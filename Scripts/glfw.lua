@@ -3,6 +3,7 @@ project "GLFW"
     architecture "x64"
 	language "C"
     location "%{wks.location}/Vendor/GLFW"
+	editandcontinue "Off"
 
 	targetdir ("%{wks.location}/Build/Bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/Build/Obj/" .. outputdir .. "/%{prj.name}")

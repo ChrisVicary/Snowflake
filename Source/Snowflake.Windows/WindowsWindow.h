@@ -1,12 +1,14 @@
 #pragma once
 
+#include <msclr/marshal.h>
+
 #pragma managed(push, off)
 
-#include "GLFW/glfw3.h"
+struct GLFWwindow {};
+struct GLFWmonitor {};
+#include <GLFW/glfw3.h>
 
 #pragma managed(pop)
-
-#include <msclr/marshal.h>
 
 namespace Snowflake {
 namespace Windows {
