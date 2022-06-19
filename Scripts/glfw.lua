@@ -2,7 +2,7 @@ project "GLFW"
 	kind "StaticLib"
     architecture "x64"
 	language "C"
-    location "%{wks.location}/Vendor/GLFW"
+    location "%{wks.location}/Build/GLFW"
 	editandcontinue "Off"
 
 	targetdir ("%{wks.location}/Build/Bin/" .. outputdir .. "/%{prj.name}")
@@ -10,22 +10,20 @@ project "GLFW"
 
     files
 	{
-		"%{prj.location}/include/GLFW/glfw3.h",
-		"%{prj.location}/include/GLFW/glfw3native.h",
-		"%{prj.location}/src/glfw_config.h",
-		"%{prj.location}/src/context.c",
-		"%{prj.location}/src/init.c",
-		"%{prj.location}/src/input.c",
-		"%{prj.location}/src/monitor.c",
-
-		"%{prj.location}/src/null_init.c",
-		"%{prj.location}/src/null_joystick.c",
-		"%{prj.location}/src/null_monitor.c",
-		"%{prj.location}/src/null_window.c",
-
-		"%{prj.location}/src/platform.c",
-		"%{prj.location}/src/vulkan.c",
-		"%{prj.location}/src/window.c",
+		"%{SourceDir.GLFW}/include/GLFW/glfw3.h",
+		"%{SourceDir.GLFW}/include/GLFW/glfw3native.h",
+		"%{SourceDir.GLFW}/src/glfw_config.h",
+		"%{SourceDir.GLFW}/src/context.c",
+		"%{SourceDir.GLFW}/src/init.c",
+		"%{SourceDir.GLFW}/src/input.c",
+		"%{SourceDir.GLFW}/src/monitor.c",
+		"%{SourceDir.GLFW}/src/null_init.c",
+		"%{SourceDir.GLFW}/src/null_joystick.c",
+		"%{SourceDir.GLFW}/src/null_monitor.c",
+		"%{SourceDir.GLFW}/src/null_window.c",
+		"%{SourceDir.GLFW}/src/platform.c",
+		"%{SourceDir.GLFW}/src/vulkan.c",
+		"%{SourceDir.GLFW}/src/window.c",
 	}
 
     filter "system:windows"
@@ -33,16 +31,16 @@ project "GLFW"
 
 		files
 		{
-			"%{prj.location}/src/win32_init.c",
-			"%{prj.location}/src/win32_joystick.c",
-            "%{prj.location}/src/win32_module.c",
-			"%{prj.location}/src/win32_monitor.c",
-			"%{prj.location}/src/win32_time.c",
-			"%{prj.location}/src/win32_thread.c",
-			"%{prj.location}/src/win32_window.c",
-			"%{prj.location}/src/wgl_context.c",
-			"%{prj.location}/src/egl_context.c",
-			"%{prj.location}/src/osmesa_context.c"
+			"%{SourceDir.GLFW}/src/win32_init.c",
+			"%{SourceDir.GLFW}/src/win32_joystick.c",
+            "%{SourceDir.GLFW}/src/win32_module.c",
+			"%{SourceDir.GLFW}/src/win32_monitor.c",
+			"%{SourceDir.GLFW}/src/win32_time.c",
+			"%{SourceDir.GLFW}/src/win32_thread.c",
+			"%{SourceDir.GLFW}/src/win32_window.c",
+			"%{SourceDir.GLFW}/src/wgl_context.c",
+			"%{SourceDir.GLFW}/src/egl_context.c",
+			"%{SourceDir.GLFW}/src/osmesa_context.c"
 		}
 
 		defines 

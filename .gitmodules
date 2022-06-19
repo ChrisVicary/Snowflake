@@ -1,3 +1,6 @@
 [submodule "Vendor/GLFW"]
 	path = Vendor/GLFW
 	url = https://github.com/glfw/glfw
+[submodule "Vendor/imgui"]
+	path = Vendor/imgui
+	url = https://github.com/ocornut/imgui

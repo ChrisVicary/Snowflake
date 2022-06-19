@@ -7,9 +7,17 @@ internal class LayerStack : IEnumerable<ILayer>
     private List<ILayer> m_layers = new List<ILayer>();
     private int m_layerInsert = 0;
 
-    public void PushLayer(ILayer layer) => m_layers.Insert(m_layerInsert++, layer);
+    public void PushLayer(ILayer layer)
+    {
+        m_layers.Insert(m_layerInsert++, layer);
+        layer.OnAttach();
+    }
 
-    public void PushOverlay(ILayer layer) => m_layers.Add(layer);
+    public void PushOverlay(ILayer layer)
+    {
+        m_layers.Add(layer);
+        layer.OnAttach();
+    }
 
     public void PopLayer(ILayer layer)
     {

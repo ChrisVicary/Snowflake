@@ -21,8 +21,9 @@ project "Snowflake.Windows"
 
     includedirs
     {
-        "%{wks.location}/Vendor/Glad/include",
-        "%{wks.location}/Vendor/GLFW/include",
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}",
+        "%{IncludeDir.ImGui}",
     }
 
     links
@@ -30,6 +31,8 @@ project "Snowflake.Windows"
         "Snowflake",
         "Glad",
         "GLFW",
+        "ImGui",
+        "opengl32.lib"
     }
 
     filter "system:windows"
